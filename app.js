@@ -1,5 +1,5 @@
 
-let DB = JSON.parse(localStorage.getItem("botanic_proper_v6") || JSON.stringify(window.BOTANIC_DATA));
+let DB = JSON.parse(localStorage.getItem("botanic_live_v7") || JSON.stringify(window.BOTANIC_DATA));
 const $ = id => document.getElementById(id);
 const money = n => n === null || n === undefined ? "TBC" : "$" + Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
 function save(){localStorage.setItem("botanic_proper_v6", JSON.stringify(DB));}
