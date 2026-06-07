@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Botanic Command Centre Proper V6</title>
+<title>Botanic Command Centre Live V7</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="botanic">
 <aside class="sidebar">
-  <div class="brand"><div class="logo">B</div><div><h1>Botanic</h1><p>Command Centre Proper V6</p></div></div>
+  <div class="brand"><div class="logo">B</div><div><h1>Botanic</h1><p>Command Centre Live V7</p></div></div>
   <button class="nav active" data-page="home">Home</button>
   <button class="nav" data-page="roadmap">Roadmap</button>
   <button class="nav" data-page="tasks">Today’s Tasks</button>
@@ -61,7 +61,7 @@
 window.BOTANIC_DATA = {
   "meta": {
     "title": "Botanic Command Centre",
-    "version": "Proper V6",
+    "version": "Live V7",
     "target": "First Flower Flip \u2014 August 2026",
     "currentPhase": "Security & Site Control"
   },
@@ -129,6 +129,48 @@ window.BOTANIC_DATA = {
       "cost": 790.88
     },
     {
+      "item": "Additional Posts + Caps",
+      "supplier": "Wireworks",
+      "delivery": "Picked Up",
+      "qty": "15 posts + caps",
+      "cost": 769.01
+    },
+    {
+      "item": "Cemix Fastcrete Additional",
+      "supplier": "Bunnings",
+      "delivery": "Picked Up",
+      "qty": "171 bags",
+      "cost": 2050.0
+    },
+    {
+      "item": "High Tensile Fence Wire",
+      "supplier": "SD Aluminium",
+      "delivery": "Picked Up / Delivered to Site",
+      "qty": "2 coils",
+      "cost": 227.7
+    },
+    {
+      "item": "Scaffold Swivel Couplers",
+      "supplier": "Facebook Marketplace / Ringo",
+      "delivery": "Picked Up",
+      "qty": "60",
+      "cost": 300.0
+    },
+    {
+      "item": "Chain Link Mesh",
+      "supplier": "SD Aluminium",
+      "delivery": "Paid / Awaiting Pickup",
+      "qty": "240m",
+      "cost": 3727.2
+    },
+    {
+      "item": "Wire Ties",
+      "supplier": "Wireworks",
+      "delivery": "Picked Up",
+      "qty": "1 pack",
+      "cost": 149.5
+    },
+    {
       "item": "Spray Paint",
       "supplier": "Mitre 10",
       "delivery": "Picked Up",
@@ -144,9 +186,9 @@ window.BOTANIC_DATA = {
     },
     {
       "item": "Diesel Fuel",
-      "supplier": "Z Gas Station, Kume\u016b",
+      "supplier": "Fuel Station",
       "delivery": "Fuel Fill",
-      "qty": "20L",
+      "qty": "20L @ $3.09/L",
       "cost": 61.8
     },
     {
@@ -162,97 +204,94 @@ window.BOTANIC_DATA = {
       "delivery": "Picked Up",
       "qty": "4",
       "cost": 44.0
+    },
+    {
+      "item": "Big Jar",
+      "supplier": "General",
+      "delivery": "Purchased",
+      "qty": "1",
+      "cost": 11.9
     }
   ],
   "procurement": [
     {
-      "item": "Cemix Fastcrete",
+      "item": "Fastcrete Remaining",
       "supplier": "Bunnings",
-      "qty": "250 bags",
-      "spec": "Remaining concrete; 66 bags already on site; total planned concrete 316 bags",
-      "cost": 2995.0,
-      "priority": "Urgent",
-      "status": "Not Purchased",
-      "workstream": "Security & Site Control"
-    },
-    {
-      "item": "Remaining Fence Posts",
-      "supplier": "Wireworks",
-      "qty": "To confirm",
-      "spec": "Needed to complete 140 holes; 125 predrilled posts already purchased",
-      "cost": null,
-      "priority": "Urgent",
-      "status": "To Confirm",
-      "workstream": "Security & Site Control"
-    },
-    {
-      "item": "Through-Post Wire Ties",
-      "supplier": "Wireworks",
-      "qty": "1 pack",
-      "spec": "Tie mesh to tension wire; purchase with remaining posts",
-      "cost": 74.75,
-      "priority": "Urgent",
-      "status": "Not Purchased",
+      "qty": "79 bags",
+      "spec": "316 bag target; 237 purchased; 79 remaining",
+      "cost": 946.42,
+      "priority": "High",
+      "status": "Outstanding",
       "workstream": "Security & Site Control"
     },
     {
       "item": "Brace Pipe",
-      "supplier": "Facebook Marketplace",
+      "supplier": "Facebook Marketplace / Gallop Imports",
       "qty": "15 lengths",
-      "spec": "32mm diameter; 5.8m lengths; $50 each",
+      "spec": "32mm diameter; approx 5.8m lengths; $50 each; required before bracing/wire run",
       "cost": 750.0,
-      "priority": "High",
-      "status": "Not Purchased",
+      "priority": "Critical",
+      "status": "Outstanding",
       "workstream": "Security & Site Control"
     },
     {
-      "item": "Scaffold Swivel Couplers",
-      "supplier": "Facebook Marketplace \u2014 77 Rotu Drive, Westgate",
-      "qty": "60",
-      "spec": "For brace pipe connections",
-      "cost": 300.0,
+      "item": "Black Shade Cloth",
+      "supplier": "Permathene",
+      "qty": "5 rolls / 250m",
+      "spec": "1.83m x 50m rolls; outside perimeter layer; awaiting payment",
+      "cost": 2041.25,
       "priority": "High",
-      "status": "Not Purchased",
+      "status": "Awaiting Payment",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Chain Link Mesh",
+      "supplier": "SD Aluminium",
+      "qty": "240m",
+      "spec": "Paid; pickup from Albany; existing 100m already available on site",
+      "cost": 3727.2,
+      "priority": "Critical",
+      "status": "Paid / Awaiting Pickup",
       "workstream": "Security & Site Control"
     },
     {
       "item": "High Tensile Fence Wire",
       "supplier": "SD Aluminium",
       "qty": "2 coils",
-      "spec": "650m per coil; 1,300m total",
+      "spec": "2.5mm high tensile wire; 650m per coil; 1,300m total",
       "cost": 227.7,
-      "priority": "High",
-      "status": "Not Purchased",
+      "priority": "Complete",
+      "status": "On Site",
       "workstream": "Security & Site Control"
     },
     {
-      "item": "Chain Link Mesh",
+      "item": "Scaffold Swivel Couplers",
+      "supplier": "Facebook Marketplace \u2014 Ringo, 77 Rotu Drive, Westgate",
+      "qty": "60",
+      "spec": "For brace pipe connections",
+      "cost": 300.0,
+      "priority": "Complete",
+      "status": "Picked Up / On Site",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Predrilled Posts",
       "supplier": "Wireworks",
-      "qty": "240m remaining",
-      "spec": "340m total fence requirement; 100m already on site",
-      "cost": 3727.2,
-      "priority": "Medium",
-      "status": "Not Purchased",
+      "qty": "125 + 15 extra posts/caps",
+      "spec": "Pre-drilled fence posts",
+      "cost": 7329.46,
+      "priority": "Complete",
+      "status": "Purchased / On Site",
       "workstream": "Security & Site Control"
     },
     {
       "item": "Wire Ties",
       "supplier": "Wireworks",
       "qty": "1 pack",
-      "spec": "Through-post wire / tie wire",
-      "cost": 74.75,
-      "priority": "Medium",
-      "status": "Not Purchased",
-      "workstream": "Security & Site Control"
-    },
-    {
-      "item": "Black Shade Cloth",
-      "supplier": "Permathene \u2014 17 Rosebank Road, Avondale",
-      "qty": "7 rolls",
-      "spec": "Security screening",
-      "cost": 2857.75,
-      "priority": "Medium",
-      "status": "Not Purchased",
+      "spec": "Through-post wire / tie wire; $130 + GST",
+      "cost": 149.5,
+      "priority": "Complete",
+      "status": "Picked Up",
       "workstream": "Security & Site Control"
     },
     {
@@ -262,7 +301,7 @@ window.BOTANIC_DATA = {
       "spec": "Use 2 gates for main entrance; remaining gates become assets/spares",
       "cost": 500.0,
       "priority": "Medium",
-      "status": "Not Purchased",
+      "status": "To Purchase",
       "workstream": "Security & Site Control"
     },
     {
@@ -279,9 +318,9 @@ window.BOTANIC_DATA = {
       "item": "Gate Automation",
       "supplier": "To confirm",
       "qty": "Motor, control box, keypad, remotes, safety beams, power supply",
-      "spec": "Automated site access control",
+      "spec": "Automated site access control; keypad access for crew",
       "cost": null,
-      "priority": "Medium",
+      "priority": "High",
       "status": "To Confirm",
       "workstream": "Security & Site Control"
     }
@@ -335,29 +374,30 @@ window.BOTANIC_DATA = {
     {
       "name": "Security & Site Control",
       "target": "June",
-      "progress": 25,
+      "progress": 35,
       "milestone": "Site secured and compliance-ready",
       "priority": [
-        "Purchase 250 bags Fastcrete",
-        "Purchase remaining fence posts",
-        "Purchase through-post wire",
-        "Confirm camera installation"
+        "Purchase/pick up brace pipe",
+        "Pick up chain link mesh from Albany",
+        "Pay and pick up shade cloth",
+        "Install corner posts and braces",
+        "Run high tensile wire",
+        "Sort gate keypad access"
       ],
       "upcoming": [
-        "Install remaining posts",
-        "Purchase brace pipe",
-        "Purchase swivel couplers",
-        "Purchase high tensile wire",
-        "Install chainlink mesh",
+        "Hang chain link mesh",
+        "Install barbed wire",
         "Install shade cloth",
         "Purchase gate lot",
-        "Plan rolling gate hardware",
+        "Design rolling gate track",
+        "Install tunnel/receiver post",
         "Confirm camera locations"
       ],
       "blockers": [
-        "Remaining concrete",
-        "Remaining fence posts",
-        "Camera install confirmation"
+        "Brace pipe not yet on site",
+        "Chain link mesh paid but awaiting pickup",
+        "Shade cloth awaiting payment",
+        "Gate automation/keypad not selected"
       ]
     },
     {
@@ -467,12 +507,13 @@ window.BOTANIC_DATA = {
     {
       "name": "Finance & Procurement",
       "target": "Active",
-      "progress": 30,
+      "progress": 45,
       "milestone": "Procurement funded and tracked",
       "priority": [
         "Keep Working Cash Summary updated",
-        "Confirm rolling gate quote",
-        "Confirm missing supplier specs"
+        "Record chain link pickup when completed",
+        "Record shade cloth payment when completed",
+        "Recalculate savings after each purchase"
       ],
       "upcoming": [
         "Update dashboard after every purchase",
@@ -480,7 +521,7 @@ window.BOTANIC_DATA = {
         "Recalculate savings"
       ],
       "blockers": [
-        "Remaining posts cost unknown",
+        "Some remaining procurement costs still TBC",
         "Gate automation costs unknown"
       ]
     }
@@ -624,6 +665,101 @@ window.BOTANIC_DATA = {
       "time": "Saved",
       "user": "Arthur",
       "details": "2 coils, 650m per coil, 1,300m total."
+    },
+    {
+      "type": "Update",
+      "title": "Command Centre live dashboard published",
+      "date": "2026-06-07",
+      "time": "Saved",
+      "user": "Arthur + ChatGPT",
+      "details": "Botanic Command Centre files uploaded to GitHub Pages and public dashboard confirmed working on phone."
+    },
+    {
+      "type": "Update",
+      "title": "Procurement status refreshed",
+      "date": "2026-06-07",
+      "time": "Saved",
+      "user": "Arthur",
+      "details": "High tensile wire and swivel couplers recorded as picked up/on site; chain link mesh paid awaiting pickup; shade cloth awaiting payment."
+    }
+  ],
+  "dailyTasks": [
+    {
+      "task": "Pick up chain link mesh",
+      "category": "Procurement",
+      "priority": "Critical",
+      "status": "Ready",
+      "notes": "Paid; awaiting pickup from Albany"
+    },
+    {
+      "task": "Purchase/pick up brace pipe",
+      "category": "Procurement",
+      "priority": "Critical",
+      "status": "Outstanding",
+      "notes": "Required before corner bracing and wire run"
+    },
+    {
+      "task": "Pay and pick up shade cloth",
+      "category": "Procurement",
+      "priority": "High",
+      "status": "Outstanding",
+      "notes": "5 rolls / 250m from Permathene"
+    },
+    {
+      "task": "Confirm swivel couplers on site",
+      "category": "Procurement",
+      "priority": "High",
+      "status": "Verify",
+      "notes": "Recorded as picked up; confirm on site"
+    },
+    {
+      "task": "Install corner posts and braces",
+      "category": "Fence",
+      "priority": "Critical",
+      "status": "Pending",
+      "notes": "Depends on brace pipe"
+    },
+    {
+      "task": "Run high tensile wire",
+      "category": "Fence",
+      "priority": "Critical",
+      "status": "Pending",
+      "notes": "Wire is on site"
+    },
+    {
+      "task": "Hang chain link mesh",
+      "category": "Fence",
+      "priority": "Critical",
+      "status": "Pending",
+      "notes": "After wire run; mesh paid awaiting pickup"
+    },
+    {
+      "task": "Install barbed wire",
+      "category": "Fence",
+      "priority": "High",
+      "status": "Pending",
+      "notes": "Use existing barbed wire stock"
+    },
+    {
+      "task": "Install shade cloth",
+      "category": "Fence",
+      "priority": "High",
+      "status": "Pending",
+      "notes": "After shade cloth purchased"
+    },
+    {
+      "task": "Gate keypad access control",
+      "category": "Security",
+      "priority": "Critical",
+      "status": "Outstanding",
+      "notes": "Needed for crew access"
+    },
+    {
+      "task": "Interior shed layout design",
+      "category": "Infrastructure",
+      "priority": "Critical",
+      "status": "Deferred",
+      "notes": "Resume after command centre/folders/dashboard setup"
     }
   ]
 };
