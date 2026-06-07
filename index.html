@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Botanic Command Centre Proper V6</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="botanic">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">B</div><div><h1>Botanic</h1><p>Command Centre Proper V6</p></div></div>
+  <button class="nav active" data-page="home">Home</button>
+  <button class="nav" data-page="roadmap">Roadmap</button>
+  <button class="nav" data-page="tasks">Today’s Tasks</button>
+  <button class="nav" data-page="procurement">Procurement</button>
+  <button class="nav" data-page="cash">The List</button>
+  <button class="nav" data-page="timeline">Completion Timeline</button>
+  <button class="nav" data-page="archive">Notes Archive</button>
+  <button class="nav" data-page="updates">Dashboard Updates</button>
+  <div class="mode"><label>Mode</label><select id="mode"><option value="botanic">Botanic Mode</option><option value="business">Business Mode</option><option value="efficiency">Efficiency Mode</option></select></div>
+</aside>
+
+<main>
+<header>
+  <div><h2 id="pageTitle">Home Dashboard</h2><p id="subtitle">Target: First Flower Flip — August 2026</p></div>
+  <button id="exportBtn">Export Backup</button>
+</header>
+
+<section id="home" class="page active">
+  <div class="topGrid">
+    <div class="card center"><div class="ring" id="readinessRing"><span id="readinessPct">0%</span></div><h3>Facility Readiness</h3><p>Current Phase: <b>Security & Site Control</b></p></div>
+    <div class="card"><h3>Timeline to August</h3><div id="timelineTop" class="timeline"></div><p class="muted">Click week dot → planned tasks and milestones</p></div>
+    <div class="card"><h3>Brain Dump</h3><textarea id="noteInput" placeholder="Type quick notes or record voice..."></textarea><div class="row"><button id="voiceBtn">🎙 Voice</button><button id="taskBtn">Add Task</button><button id="archiveBtn">Archive</button></div><p class="muted">Daily notes auto-archive by date.</p></div>
+  </div>
+
+  <div class="card"><h3>Roadmap Progress</h3><div id="progressBars"></div></div>
+
+  <div class="split">
+    <div class="card"><h3>Critical Path</h3><ol id="criticalPath"></ol></div>
+    <div class="card"><h3>Current Blockers</h3><ul id="blockers"></ul></div>
+  </div>
+
+  <div class="split">
+    <div class="card"><h3>Today’s Tasks by Workstream</h3><div id="taskCards"></div></div>
+    <div class="card"><h3>Upcoming Purchases</h3><div id="purchaseList"></div></div>
+  </div>
+
+  <div class="metrics"><div><span>Cash Remaining</span><b id="cashRemaining"></b></div><div><span>Remaining Procurement</span><b id="remainingProcurement"></b></div><div><span>Project Savings</span><b id="projectSavings"></b></div></div>
+</section>
+
+<section id="roadmap" class="page"><h2>Roadmap</h2><div id="roadmapCards"></div></section>
+<section id="tasks" class="page"><h2>Today’s Tasks</h2><p class="muted">Task completion requires validation before it moves to Completion Timeline.</p><div id="fullTasks"></div></section>
+<section id="procurement" class="page"><h2>Procurement Database</h2><table id="procurementTable"></table></section>
+<section id="cash" class="page"><h2>Working Cash Summary “The List”</h2><div id="cashSummary"></div><h3>Pre-Existing Materials</h3><table id="preExistingTable"></table><h3>Purchases Made</h3><table id="purchasesMadeTable"></table><h3>Comparison of Material Purchases</h3><table id="comparisonTable"></table></section>
+<section id="timeline" class="page"><h2>Completion Timeline</h2><div id="completionTimeline"></div></section>
+<section id="archive" class="page"><h2>Daily Notes Archive</h2><div id="notesArchive"></div></section>
+<section id="updates" class="page"><h2>Dashboard Updates</h2><div class="card"><ul><li>Data embedded directly into app to avoid blank screens.</li><li>Roadmap phases tracked as milestone outcomes.</li><li>Homepage uses preferred Botanic layout.</li><li>Task completion requires validation.</li><li>Procurement keeps supplier, quantity, measurements, specs, costs, status and priority.</li><li>Brain Dump supports Add Task and Archive.</li><li>Efficiency Mode keeps savings and bottlenecks visible.</li><li>Reminder: confirm commercial rolling gate quote, currently estimated around $9,000.</li></ul></div></section>
+</main>
+
+<script>
+window.BOTANIC_DATA = {
+  "meta": {
+    "title": "Botanic Command Centre",
+    "version": "Proper V6",
+    "target": "First Flower Flip \u2014 August 2026",
+    "currentPhase": "Security & Site Control"
+  },
+  "modes": [
+    "Botanic Mode",
+    "Business Mode",
+    "Efficiency Mode"
+  ],
+  "workingCashSummary": {
+    "cashInStarting": 7400.0,
+    "cashInAdditional": 400.0,
+    "cashInTotal": 7800.0,
+    "expensesRecorded": 7574.54,
+    "cashBalanceRemaining": 225.46,
+    "remainingProcurement": 10932.4,
+    "savingsCostAvoidance": 10845.86,
+    "fenceMaterials": 19836.9,
+    "labourAllowance": 6250.0,
+    "installedCost": 26086.9,
+    "materialsCostPerMetre": 58.34,
+    "labourCostPerMetre": 18.38,
+    "installedCostPerMetre": 76.73,
+    "expectedDuration": "14\u201316 working days",
+    "safeAllowance": "18\u201322 working days"
+  },
+  "preExistingMaterials": [
+    {
+      "item": "Chain Link Mesh",
+      "supplier": "SD Aluminium",
+      "qty": "100m",
+      "value": 1553.0
+    },
+    {
+      "item": "Barbed Wire",
+      "supplier": "SD Aluminium",
+      "qty": "2.5 rolls, 400m each",
+      "value": 388.13
+    },
+    {
+      "item": "Permanent Wire Strainers",
+      "supplier": "Farmlands",
+      "qty": "100",
+      "value": 504.0
+    },
+    {
+      "item": "Shade Cloth Clips",
+      "supplier": "Existing Stock",
+      "qty": "1,000",
+      "value": 320.0
+    }
+  ],
+  "purchasesMade": [
+    {
+      "item": "Predrilled Posts",
+      "supplier": "Wireworks",
+      "delivery": "Delivered",
+      "qty": "125",
+      "cost": 6560.45
+    },
+    {
+      "item": "Cemix Fastcrete",
+      "supplier": "Bunnings",
+      "delivery": "Picked Up",
+      "qty": "66 bags",
+      "cost": 790.88
+    },
+    {
+      "item": "Spray Paint",
+      "supplier": "Mitre 10",
+      "delivery": "Picked Up",
+      "qty": "2 cans",
+      "cost": 25.96
+    },
+    {
+      "item": "Diesel Fuel Can (20L Yellow)",
+      "supplier": "Mitre 10",
+      "delivery": "Picked Up",
+      "qty": "1",
+      "cost": 37.98
+    },
+    {
+      "item": "Diesel Fuel",
+      "supplier": "Z Gas Station, Kume\u016b",
+      "delivery": "Fuel Fill",
+      "qty": "20L",
+      "cost": 61.8
+    },
+    {
+      "item": "Spades",
+      "supplier": "Mitre 10",
+      "delivery": "Picked Up",
+      "qty": "2",
+      "cost": 28.0
+    },
+    {
+      "item": "String Line",
+      "supplier": "Mitre 10",
+      "delivery": "Picked Up",
+      "qty": "4",
+      "cost": 44.0
+    }
+  ],
+  "procurement": [
+    {
+      "item": "Cemix Fastcrete",
+      "supplier": "Bunnings",
+      "qty": "250 bags",
+      "spec": "Remaining concrete; 66 bags already on site; total planned concrete 316 bags",
+      "cost": 2995.0,
+      "priority": "Urgent",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Remaining Fence Posts",
+      "supplier": "Wireworks",
+      "qty": "To confirm",
+      "spec": "Needed to complete 140 holes; 125 predrilled posts already purchased",
+      "cost": null,
+      "priority": "Urgent",
+      "status": "To Confirm",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Through-Post Wire Ties",
+      "supplier": "Wireworks",
+      "qty": "1 pack",
+      "spec": "Tie mesh to tension wire; purchase with remaining posts",
+      "cost": 74.75,
+      "priority": "Urgent",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Brace Pipe",
+      "supplier": "Facebook Marketplace",
+      "qty": "15 lengths",
+      "spec": "32mm diameter; 5.8m lengths; $50 each",
+      "cost": 750.0,
+      "priority": "High",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Scaffold Swivel Couplers",
+      "supplier": "Facebook Marketplace \u2014 77 Rotu Drive, Westgate",
+      "qty": "60",
+      "spec": "For brace pipe connections",
+      "cost": 300.0,
+      "priority": "High",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "High Tensile Fence Wire",
+      "supplier": "SD Aluminium",
+      "qty": "2 coils",
+      "spec": "650m per coil; 1,300m total",
+      "cost": 227.7,
+      "priority": "High",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Chain Link Mesh",
+      "supplier": "Wireworks",
+      "qty": "240m remaining",
+      "spec": "340m total fence requirement; 100m already on site",
+      "cost": 3727.2,
+      "priority": "Medium",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Wire Ties",
+      "supplier": "Wireworks",
+      "qty": "1 pack",
+      "spec": "Through-post wire / tie wire",
+      "cost": 74.75,
+      "priority": "Medium",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Black Shade Cloth",
+      "supplier": "Permathene \u2014 17 Rosebank Road, Avondale",
+      "qty": "7 rolls",
+      "spec": "Security screening",
+      "cost": 2857.75,
+      "priority": "Medium",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Gate Lot",
+      "supplier": "Facebook Marketplace",
+      "qty": "14 gates",
+      "spec": "Use 2 gates for main entrance; remaining gates become assets/spares",
+      "cost": 500.0,
+      "priority": "Medium",
+      "status": "Not Purchased",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Rolling Gate Hardware",
+      "supplier": "To confirm",
+      "qty": "Track, rollers, guide rollers, end stops, receiver/catch",
+      "spec": "Convert two gates into rolling gates",
+      "cost": null,
+      "priority": "Medium",
+      "status": "To Confirm",
+      "workstream": "Security & Site Control"
+    },
+    {
+      "item": "Gate Automation",
+      "supplier": "To confirm",
+      "qty": "Motor, control box, keypad, remotes, safety beams, power supply",
+      "spec": "Automated site access control",
+      "cost": null,
+      "priority": "Medium",
+      "status": "To Confirm",
+      "workstream": "Security & Site Control"
+    }
+  ],
+  "comparisons": [
+    {
+      "item": "Brace Pipe",
+      "original": "Wireworks 40mm",
+      "current": "Facebook Marketplace 32mm",
+      "difference": 216.0
+    },
+    {
+      "item": "D42 Swivel Combination",
+      "original": "SD Aluminium",
+      "current": "Facebook Marketplace",
+      "difference": 1971.6
+    },
+    {
+      "item": "High Tensile Wire",
+      "original": "Wireworks 25kg coil",
+      "current": "SD Aluminium",
+      "difference": 13.8
+    },
+    {
+      "item": "Wire Ties",
+      "original": "Bunnings Bag Ties",
+      "current": "Wireworks Through-Post Wire",
+      "difference": 152.45
+    },
+    {
+      "item": "Chain Link Mesh",
+      "original": "SD Aluminium",
+      "current": "Wireworks",
+      "difference": 124.2
+    },
+    {
+      "item": "Black Shade Cloth",
+      "original": "Advance Landscape Systems",
+      "current": "Permathene",
+      "difference": 409.08
+    },
+    {
+      "item": "Rolling Gate System",
+      "original": "Commercial rolling gate supply estimate",
+      "current": "Self-build from Facebook gates + hardware",
+      "difference": null,
+      "note": "Commercial quote estimated around $9,000; exact quote and hardware cost to confirm."
+    }
+  ],
+  "workstreams": [
+    {
+      "name": "Security & Site Control",
+      "target": "June",
+      "progress": 25,
+      "milestone": "Site secured and compliance-ready",
+      "priority": [
+        "Purchase 250 bags Fastcrete",
+        "Purchase remaining fence posts",
+        "Purchase through-post wire",
+        "Confirm camera installation"
+      ],
+      "upcoming": [
+        "Install remaining posts",
+        "Purchase brace pipe",
+        "Purchase swivel couplers",
+        "Purchase high tensile wire",
+        "Install chainlink mesh",
+        "Install shade cloth",
+        "Purchase gate lot",
+        "Plan rolling gate hardware",
+        "Confirm camera locations"
+      ],
+      "blockers": [
+        "Remaining concrete",
+        "Remaining fence posts",
+        "Camera install confirmation"
+      ]
+    },
+    {
+      "name": "Power & Utilities",
+      "target": "June / July",
+      "progress": 5,
+      "milestone": "Utilities ready",
+      "priority": [
+        "Build electrical load schedule",
+        "Calculate maximum demand",
+        "Confirm lighting load",
+        "Confirm HVAC load",
+        "Confirm dehumidification load"
+      ],
+      "upcoming": [
+        "Contact power company",
+        "Begin power upgrade process",
+        "Obtain electrician assessment"
+      ],
+      "blockers": [
+        "Electrical load schedule not complete",
+        "Power company not contacted"
+      ]
+    },
+    {
+      "name": "Internal Build-Out",
+      "target": "July",
+      "progress": 5,
+      "milestone": "Facility physically built",
+      "priority": [
+        "Measure DPS/PIR panels",
+        "Create panel inventory",
+        "Calculate total panel m\u00b2"
+      ],
+      "upcoming": [
+        "Calculate facility wall/ceiling requirement",
+        "Calculate coverage %",
+        "Confirm room layout"
+      ],
+      "blockers": [
+        "Panel measurements missing",
+        "Facility wall/ceiling requirement missing"
+      ]
+    },
+    {
+      "name": "Equipment Procurement",
+      "target": "July",
+      "progress": 3,
+      "milestone": "Long-lead equipment ordered/installed",
+      "priority": [
+        "Research HVAC",
+        "Research dehumidifiers",
+        "Research lighting"
+      ],
+      "upcoming": [
+        "Request quotes",
+        "Compare suppliers",
+        "Confirm shipping timelines",
+        "Place orders"
+      ],
+      "blockers": [
+        "Major equipment not selected",
+        "Potential 4-week shipping delay"
+      ]
+    },
+    {
+      "name": "Cultivation Readiness",
+      "target": "August",
+      "progress": 10,
+      "milestone": "Plants ready when facility ready",
+      "priority": [
+        "Select mother genetics",
+        "Select production genetics",
+        "Start seed germination if running new genetics"
+      ],
+      "upcoming": [
+        "Phenotype assessment",
+        "Select keeper mothers",
+        "Build mother stock",
+        "Clone production plan",
+        "Scale toward 20,000 clones"
+      ],
+      "blockers": [
+        "Mother stock not confirmed",
+        "Clone production schedule not finalized"
+      ]
+    },
+    {
+      "name": "Compliance & Licensing",
+      "target": "August",
+      "progress": 0,
+      "milestone": "Compliance package ready",
+      "priority": [
+        "Start security documentation",
+        "Start site plans",
+        "Create SOP framework"
+      ],
+      "upcoming": [
+        "Record keeping framework",
+        "Compliance gap assessment",
+        "MCA preparation"
+      ],
+      "blockers": [
+        "Compliance package not started"
+      ]
+    },
+    {
+      "name": "Finance & Procurement",
+      "target": "Active",
+      "progress": 30,
+      "milestone": "Procurement funded and tracked",
+      "priority": [
+        "Keep Working Cash Summary updated",
+        "Confirm rolling gate quote",
+        "Confirm missing supplier specs"
+      ],
+      "upcoming": [
+        "Update dashboard after every purchase",
+        "Attach receipts/photos",
+        "Recalculate savings"
+      ],
+      "blockers": [
+        "Remaining posts cost unknown",
+        "Gate automation costs unknown"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "month": "June",
+      "week": "W1",
+      "focus": "Security",
+      "tasks": [
+        "Fastcrete",
+        "Posts",
+        "Load Schedule",
+        "Panels"
+      ]
+    },
+    {
+      "month": "June",
+      "week": "W2",
+      "focus": "Power",
+      "tasks": [
+        "Power company",
+        "Bracing",
+        "Cameras",
+        "Equipment quotes"
+      ]
+    },
+    {
+      "month": "June",
+      "week": "W3",
+      "focus": "Build",
+      "tasks": [
+        "Panels",
+        "Layout",
+        "Tension wire",
+        "Gate plan"
+      ]
+    },
+    {
+      "month": "June",
+      "week": "W4",
+      "focus": "Equip",
+      "tasks": [
+        "HVAC",
+        "Dehumidifiers",
+        "Lighting",
+        "Orders"
+      ]
+    },
+    {
+      "month": "July",
+      "week": "W1",
+      "focus": "Install",
+      "tasks": [
+        "Mesh",
+        "Shade cloth",
+        "Power quote",
+        "Room layout"
+      ]
+    },
+    {
+      "month": "July",
+      "week": "W2",
+      "focus": "Rooms",
+      "tasks": [
+        "Build-out",
+        "Equipment shipping",
+        "Compliance docs"
+      ]
+    },
+    {
+      "month": "July",
+      "week": "W3",
+      "focus": "Commission",
+      "tasks": [
+        "Install equipment",
+        "Irrigation",
+        "Controls"
+      ]
+    },
+    {
+      "month": "July",
+      "week": "W4",
+      "focus": "Prep",
+      "tasks": [
+        "Clean rooms",
+        "Security checks",
+        "Clone timing"
+      ]
+    },
+    {
+      "month": "August",
+      "week": "W1",
+      "focus": "Plants",
+      "tasks": [
+        "Move plants",
+        "Verify systems",
+        "Start production"
+      ]
+    },
+    {
+      "month": "August",
+      "week": "W2",
+      "focus": "Flower",
+      "tasks": [
+        "Flip readiness",
+        "Final checks",
+        "Compliance records"
+      ]
+    }
+  ],
+  "criticalPath": [
+    "Remaining Concrete",
+    "Remaining Fence Posts",
+    "Electrical Load Schedule",
+    "Power Upgrade Request",
+    "DPS/PIR Panel Measurements",
+    "HVAC Selection"
+  ],
+  "completionTimeline": [
+    {
+      "type": "Decision",
+      "title": "Working Cash Summary created",
+      "date": "2026-06-03",
+      "time": "Saved",
+      "user": "Arthur",
+      "details": "The List confirmed as canonical project finance/procurement snapshot."
+    },
+    {
+      "type": "Decision",
+      "title": "Chainlink mesh updated to 240m remaining",
+      "date": "2026-06-03",
+      "time": "Saved",
+      "user": "Arthur",
+      "details": "Total mesh requirement 340m; 100m on site."
+    },
+    {
+      "type": "Decision",
+      "title": "High tensile wire spec added",
+      "date": "2026-06-03",
+      "time": "Saved",
+      "user": "Arthur",
+      "details": "2 coils, 650m per coil, 1,300m total."
+    }
+  ]
+};
+</script>
+<script src="app.js"></script>
+</body>
+</html>
