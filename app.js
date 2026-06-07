@@ -2,8 +2,7 @@
 let DB = JSON.parse(localStorage.getItem("botanic_live_v7") || JSON.stringify(window.BOTANIC_DATA));
 const $ = id => document.getElementById(id);
 const money = n => n === null || n === undefined ? "TBC" : "$" + Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-function save(){localStorage.setItem("botanic_proper_v6", JSON.stringify(DB));}
-function avgReadiness(){return Math.round(DB.workstreams.reduce((a,w)=>a+w.progress,0)/DB.workstreams.length);}
+function save(){localStorage.setItem("botanic_live_v7", JSON.stringify(DB));}function avgReadiness(){return Math.round(DB.workstreams.reduce((a,w)=>a+w.progress,0)/DB.workstreams.length);}
 document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>{document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));$(b.dataset.page).classList.add("active");document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active", n===b));$("pageTitle").textContent=b.textContent;});
 $("mode").onchange=e=>{document.body.className=e.target.value;localStorage.setItem("botanic_theme",e.target.value)};
 function table(headers, rows){return "<thead><tr>"+headers.map(h=>`<th>${h}</th>`).join("")+"</tr></thead><tbody>"+rows.map(r=>"<tr>"+r.map(c=>`<td>${c??""}</td>`).join("")+"</tr>").join("")+"</tbody>"}
@@ -32,5 +31,5 @@ function renderArchive(){let a=JSON.parse(localStorage.getItem("botanic_notes_ar
 $("archiveBtn").onclick=()=>{let v=$("noteInput").value.trim(); if(!v)return; let a=JSON.parse(localStorage.getItem("botanic_notes_archive")||"{}"); let k=new Date().toISOString().slice(0,10); (a[k]=a[k]||[]).push(v); localStorage.setItem("botanic_notes_archive",JSON.stringify(a)); $("noteInput").value=""; renderArchive();}
 $("taskBtn").onclick=()=>{let v=$("noteInput").value.trim(); if(!v)return; DB.workstreams[0].priority.unshift(v+" (from Brain Dump)"); $("noteInput").value=""; save(); render();}
 $("voiceBtn").onclick=()=>alert("Voice transcription placeholder for hosted/API version.");
-$("exportBtn").onclick=()=>{let a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([JSON.stringify(DB,null,2)],{type:"application/json"})); a.download="botanic-command-centre-proper-v6-backup.json"; a.click();}
+$("exportBtn").onclick=()=>{let a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([JSON.stringify(DB,null,2)],{type:"application/json"})); a.download="botanic-command-centre-live-v7-backup.json"; a.click();}
 render();
